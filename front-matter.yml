@@ -1,0 +1,22 @@
+---
+subject: Cover Letter
+author: Jor Bashllari
+city: Tirana
+from:
+  - "GPG: 0xf5ad4ced571112a3"
+  - Rr. Sokrat Miho, Sandy 32B
+to:
+  - ABB Training Center GmbH & Co. KG
+  - Eppelheimer Straße 82
+  - 69123 Heidelberg
+ending: "Sincerely,"
+# Settings
+mainfont: Hoefler Text
+sansfont: Helvetica Neue
+monofont: League Mono
+# lang: english
+fontsize: 11pt
+geometry: a4paper, left=35mm, right=35mm, top=30mm, bottom=30mm
+# letterhead: true
+# customdate: YYYY-MM-DD
+---

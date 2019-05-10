@@ -1,5 +1,5 @@
 TEX = pandoc
-src = template.tex letter.md
+src = template.tex letter.md front-matter.yml
 FLAGS = --pdf-engine=xelatex
 
 output.pdf : $(src)
