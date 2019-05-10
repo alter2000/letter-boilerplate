@@ -1,75 +1,156 @@
-# Letter Boilerplate
+Letter Boilerplate
+==================
 
-A boilerplate to quickly and painlessly generate high-quality letters through LaTeX.
+A boilerplate to quickly and painlessly generate high-quality letters
+through LaTeX.
 
-Why settle for MS Word when you can get the job done using your text editor?
+Why settle for MS Word when you can get the job done using your text
+editor?
 
-![preview](preview.jpg)
+![preview]
 
-## Dependencies
+  [preview]: preview.jpg
 
-1. LaTeX with the following extra packages: `fontspec` `geometry` `ragged2e` `enumitem` `xunicode` `xltxtra` `hyperref` `polyglossia` `footmisc` (also, `datetime2` plus its language modules if you want to use a custom date, see below in the settings section)
-2. [Pandoc](http://pandoc.org/), the universal document converter.
+Dependencies
+------------
 
-To install LaTeX on Mac OS X, I recommend getting the smaller version BasicTeX from [here](https://tug.org/mactex/morepackages.html) and installing the additional packages with `tlmgr` afterwards. Same goes for Linux: install `texlive-base` with your package manager and add the needed additional packages later.
+1.  LaTeX with the following extra packages: `fontspec` `geometry`
+    `ragged2e` `enumitem` `xunicode` `xltxtra` `hyperref` `polyglossia`
+    `footmisc` (also, `datetime2` plus its language modules if you want
+    to use a custom date, see below in the settings section)
+2.  [Pandoc], the universal document converter.
 
-To install pandoc on Mac OS X, run `brew install pandoc`. To install it on Linux, refer to the [official docs](http://pandoc.org/installing.html).
+To install LaTeX on Mac OS X, I recommend getting the smaller version
+BasicTeX from [here] and installing the additional packages with `tlmgr`
+afterwards. Same goes for Linux: install `texlive-base` with your
+package manager and add the needed additional packages later.
 
-## Getting started
+To install pandoc on Mac OS X, run `brew install pandoc`. To install it
+on Linux, refer to the [official docs].
 
-1. Open `letter.md` and fill the YAML frontmatter with your details, your recipient's details, optional subject line, and the desired settings.
-2. Write your letter in markdown below.
-3. Run `make` to compile the PDF.
+  [Pandoc]: http://pandoc.org/
+  [here]: https://tug.org/mactex/morepackages.html
+  [official docs]: http://pandoc.org/installing.html
 
-If a file named `signature.pdf` is present in the directory, the boilerplate will automatically print it after the letter's body as a final touch. Follow [this method](http://tex.stackexchange.com/a/32940/82423) to import your own signature.
+Getting started
+---------------
+
+1.  Open `letter.md` and fill the YAML frontmatter with your details,
+    your recipient's details, optional subject line, and the desired
+    settings.
+2.  Write your letter in markdown below.
+3.  Run `make` to compile the PDF.
+
+If a file named `signature.pdf` is present in the directory, the
+boilerplate will automatically print it after the letter's body as a
+final touch. Follow [this method] to import your own signature.
 
 **Note**: this template needs to be compiled with XeTeX.
 
+  [this method]: http://tex.stackexchange.com/a/32940/82423
+
 ### Note for Windows users
 
-Although I didn't test it, you can probably use this on Windows, too. Both [Pandoc](http://pandoc.org/installing.html) and LaTeX can be installed on Windows (I recommend [MiKTeX](http://miktex.org/) for that) and you should be able to run makefiles on Windows through [Cygwin](https://www.cygwin.com/). If that's too much hassle, this command should do the trick in Powershell:
+Although I didn't test it, you can probably use this on Windows, too.
+Both [Pandoc][1] and LaTeX can be installed on Windows (I recommend
+[MiKTeX] for that) and you should be able to run makefiles on Windows
+through [Cygwin]. If that's too much hassle, this command should do the
+trick in Powershell:
 
     pandoc letter.md -o output.pdf --template=template.tex --pdf-engine=xelatex
 
-## Available settings
+  [1]: http://pandoc.org/installing.html
+  [MiKTeX]: http://miktex.org/
+  [Cygwin]: https://www.cygwin.com/
 
-- **`subject`**: The letter's subject (optional)
-- **`mainfont`**: Hoefler Text is the default, but every font installed on your system should work out of the box (thanks, XeTeX!)
-- **`altfont`**: Used to render the recipient address so that it stands out from the rest of the letter.
-- **`fontsize`**: Possible values here are 10pt, 11pt and 12pt.
-- **`lang`**: Sets the main language through the `polyglossia` package. This is important for proper hyphenation and date format.
-- **`geometry`**: A string that sets the margins through `geometry`. Read [this](https://www.sharelatex.com/learn/Page_size_and_margins) to learn how this package works.
-- **`letterhead`**: include custom letterhead in the PDF (see below).
-- **`customdate`**: Allows you to specify a custom date in the format YYYY-MM-DD in case you need to pre/postdate your letter. *Caveat*: Requires `datetime2` along with its language module (ex: if `lang` is set to `german` do `tlmgr install datetime2 datetime2-german`)
+Available settings
+------------------
 
-## Custom letterhead
+-   **`subject`**: The letter's subject (optional)
+-   **`mainfont`**: Hoefler Text is the default, but every font
+    installed on your system should work out of the box (thanks, XeTeX!)
+-   **`sansfont`**: Used to render the recipient address so that it
+    stands out from the rest of the letter.
+-   **`fontsize`**: Possible values here are 10pt, 11pt and 12pt.
+-   **`lang`**: Sets the main language through the `polyglossia`
+    package. This is important for proper hyphenation and date format.
+-   **`geometry`**: A string that sets the margins through `geometry`.
+    Read [this] to learn how this package works.
+-   **`letterhead`**: include custom letterhead in the PDF (see below).
+-   **`customdate`**: Allows you to specify a custom date in the format
+    YYYY-MM-DD in case you need to pre/postdate your letter. *Caveat*:
+    Requires `datetime2` along with its language module (ex: if `lang`
+    is set to `german` do `tlmgr install datetime2 datetime2-german`)
 
-If you have already designed your own letterhead and want to use it with this template, including it should be easy enough. Set the `letterhead` option to `true` to activate the `wallpaper` package in the template. `wallpaper` will look for a file named `letterhead.pdf` in the project root folder and print it on the PDF before compiling the document. Change the fonts to match the ones in your letterhead, adjust the margins with `geometry` and you should be all set.
+  [this]: https://www.sharelatex.com/learn/Page_size_and_margins
 
-## Recommended readings
+Custom letterhead
+-----------------
 
-- [Typesetting Automation](http://mrzool.cc/writing/typesetting-automation/), my article about this project with in-depth instructions and some suggestions for an ideal workflow.
-- [The Beauty of LaTeX](http://nitens.org/taraborelli/latex) by Dario Taraborelli
-- [Letterhead advices](http://practicaltypography.com/letterhead.html) from Butterick's Practical Typography 
-- [Multichannel Text Processing](https://ia.net/topics/multichannel-text-processing/) by iA
-- [Why Microsoft Word must Die](http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html) by Charlie Stross
-- [Word Processors: Stupid and Inefficient](http://ricardo.ecn.wfu.edu/~cottrell/wp.html) by Allin Cottrell
-- [Proprietary Binary Data Formats: Just Say No!](http://www.podval.org/~sds/data.html) by Sam Steingold
-- [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff
+If you have already designed your own letterhead and want to use it with
+this template, including it should be easy enough. Set the `letterhead`
+option to `true` to activate the `wallpaper` package in the template.
+`wallpaper` will look for a file named `letterhead.pdf` in the project
+root folder and print it on the PDF before compiling the document.
+Change the fonts to match the ones in your letterhead, adjust the
+margins with `geometry` and you should be all set.
 
-## Resources
+Recommended readings
+--------------------
 
-- Refer to [pandoc's documentation](http://pandoc.org/MANUAL.html#templates) to learn more about how templates work.
-- If you're not familiar with the YAML syntax, [here](http://learnxinyminutes.com/docs/yaml/)'s a good overview.
-- If you want to edit the template but LaTeX scares you, these [docs](https://www.sharelatex.com/learn/Main_Page) put together by ShareLaTeX cover most of the basics and are surprisingly kind to the beginner.
-- Odds are your question already has an answer on [TeX Stack Exchange](https://www.sharelatex.com/learn/Main_Page). Also, pretty friendly crowd in there.
-- Need to fax that letter? Check out [Phaxio](https://www.phaxio.com/) and learn how to send your faxes from the command line with a simple API call.
+-   [Typesetting Automation], mrzool's article about this project with
+    in-depth instructions and some suggestions for an ideal workflow.
+-   [The Beauty of LaTeX] by Dario Taraborelli
+-   [Letterhead advices] from Butterick's Practical Typography
+-   [Multichannel Text Processing] by iA
+-   [Why Microsoft Word must Die] by Charlie Stross
+-   [Word Processors: Stupid and Inefficient] by Allin Cottrell
+-   [Proprietary Binary Data Formats: Just Say No!] by Sam Steingold
+-   [Sustainable Authorship in Plain Text using Pandoc and Markdown] by
+    Dennis Tenen and Grant Wythoff
 
-## See also
+  [Typesetting Automation]: http://mrzool.cc/writing/typesetting-automation/
+  [The Beauty of LaTeX]: http://nitens.org/taraborelli/latex
+  [Letterhead advices]: http://practicaltypography.com/letterhead.html
+  [Multichannel Text Processing]: https://ia.net/topics/multichannel-text-processing/
+  [Why Microsoft Word must Die]: http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html
+  [Word Processors: Stupid and Inefficient]: http://ricardo.ecn.wfu.edu/~cottrell/wp.html
+  [Proprietary Binary Data Formats: Just Say No!]: http://www.podval.org/~sds/data.html
+  [Sustainable Authorship in Plain Text using Pandoc and Markdown]: http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown
 
-- [invoice-boilerplate](https://github.com/mrzool/invoice-boilerplate) — Simple automated LaTeX invoicing system
-- [cv-boilerplate](https://github.com/mrzool/cv-boilerplate) — Easing the process of building and maintaining a CV using LaTeX
+Resources
+---------
 
-## License
+-   Refer to [pandoc's documentation] to learn more about how templates
+    work.
+-   If you're not familiar with the YAML syntax, [here][2]'s a good
+    overview.
+-   If you want to edit the template but LaTeX scares you, these [docs]
+    put together by ShareLaTeX cover most of the basics and are
+    surprisingly kind to the beginner.
+-   Odds are your question already has an answer on [TeX Stack
+    Exchange][docs]. Also, pretty friendly crowd in there.
+-   Need to fax that letter? Check out [Phaxio] and learn how to send
+    your faxes from the command line with a simple API call.
 
-[MIT](https://opensource.org/licenses/MIT)
+  [pandoc's documentation]: http://pandoc.org/MANUAL.html#templates
+  [2]: http://learnxinyminutes.com/docs/yaml/
+  [docs]: https://www.sharelatex.com/learn/Main_Page
+  [Phaxio]: https://www.phaxio.com/
+
+See also
+--------
+
+-   [invoice-boilerplate] --- Simple automated LaTeX invoicing system
+-   [cv-boilerplate] --- Easing the process of building and maintaining
+    a CV using LaTeX
+
+  [invoice-boilerplate]: https://github.com/mrzool/invoice-boilerplate
+  [cv-boilerplate]: https://github.com/mrzool/cv-boilerplate
+
+License
+-------
+
+[MIT]
+
+  [MIT]: https://opensource.org/licenses/MIT
