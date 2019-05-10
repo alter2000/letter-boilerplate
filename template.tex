@@ -40,8 +40,8 @@ $endif$
 
 % converts LaTeX specials (quotes, dashes etc.) to Unicode
 \defaultfontfeatures{Mapping=tex-text}
-\setromanfont [Ligatures={Common}, Numbers={OldStyle}]{$mainfont$}
-\setsansfont[Scale=0.9]{$altfont$}
+\setromanfont[Ligatures={Common}, Numbers={OldStyle}]{$mainfont$}
+\setsansfont[Scale=0.9]{$sansfont$}
 \setmonofont[Scale=0.8]{$monofont$}
 
 % Set paragraph break
@@ -53,8 +53,8 @@ $endif$
 $if(mainfont)$
     \setmainfont{$mainfont$}
 $endif$
-$if(altfont)$
-    \setsansfont{$altfont$}
+$if(sansfont)$
+    \setsansfont{$sansfont$}
 $endif$
 
 % Command required by how Pandoc handles the list conversion
@@ -122,8 +122,12 @@ $body$
     \includegraphics[height=5.5\baselineskip]{signature.pdf} \par
   }
   {
-    \vspace{5.5\baselineskip}
+    \vspace{4.5\baselineskip}
   }
+  $if(ending)$
+    $ending$
+    \\*[3mm]
+  $endif$
   $author$
 \end{FlushRight}
 
